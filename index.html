@@ -5,15 +5,41 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ephesis&family=Nova+Square&family=Saira+Extra+Condensed:wght@100&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="src/style.css">
+    <script> 
+      let clickCount = 0;
+      let timerCount = 10;
+      let timerStart = false;
+      let myTimer;
+
+      function handleClick() {
+          if(timerCount>0) {
+            clickCount++;
+            document.getElementById("score").innerText=clickCount;
+          }
+          if(!timerStart) {
+            console.log("1")
+            myTimer = setInterval(()=>{
+              console.log("started")
+              timerCount--;
+              document.getElementById("countdown").innerText=timerCount;
+              if(timerCount<=0) {
+                console.log("entered if")
+                clearInterval(myTimer);
+              }
+            }, 1000)
+            timerStart = true;
+          }
+      }
+    </script>
   </head>
   <body>
      <div id="page">
       <h1 id="title">Click Game</h1>
       <h2 id="score">0</h2>
-      <button id="clickbutton">Click me!</button>
+      <button id="clickbutton" onclick="handleClick()">Click me!</button>
       <div id="timer">
         <div>Timer:</div>
-        <div id="countdown">30</div>
+        <div id="countdown">10</div>
       </div>
      </div>
   </body>

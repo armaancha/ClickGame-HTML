@@ -4,33 +4,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ephesis&family=Nova+Square&family=Saira+Extra+Condensed:wght@100&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="src/style.css">
-    <script> 
-      let clickCount = 0;
-      let timerCount = 10;
-      let timerStart = false;
-      let myTimer;
-
-      function handleClick() {
-          if(timerCount>0) {
-            clickCount++;
-            document.getElementById("score").innerText=clickCount;
-          }
-          if(!timerStart) {
-            console.log("1")
-            myTimer = setInterval(()=>{
-              console.log("started")
-              timerCount--;
-              document.getElementById("countdown").innerText=timerCount;
-              if(timerCount<=0) {
-                console.log("entered if")
-                clearInterval(myTimer);
-              }
-            }, 1000)
-            timerStart = true;
-          }
-      }
-    </script>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="script.js"></script> 
   </head>
   <body>
      <div id="page">
@@ -39,8 +14,9 @@
       <button id="clickbutton" onclick="handleClick()">Click me!</button>
       <div id="timer">
         <div>Timer:</div>
-        <div id="countdown">10</div>
+        <div id="countdown">5</div>
       </div>
+      <button id="replay" onclick="replayClick()">Play again</button>
      </div>
   </body>
 </html>
